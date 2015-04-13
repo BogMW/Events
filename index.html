@@ -8,60 +8,16 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <link href="js/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery-ui/jquery-ui.js"></script>
-
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-            $( "#slider" ).slider({
-                value : 2,//Значение, которое будет выставлено слайдеру при загрузке
-                min : 1,//Минимально возможное значение на ползунке
-                max : 6,//Максимально возможное значение на ползунке
-                step : 1,//Шаг, с которым будет двигаться ползунок
-                create: function( event, ui ) {
-                    val = $( "#slider" ).slider("value");//При создании слайдера, получаем его значение в перемен. val
-                    $( "#contentSlider" ).html( val );//Заполняем этим значением элемент с id contentSlider
-                },
-                slide: function( event, ui ) {
-                    $( "#contentSlider" ).html( ui.value );//При изменении значения ползунка заполняем элемент с id contentSlider
-                }
-            });
-        });
-    </script>
-    <script>
-        $(function() {
-            $( "#from" ).datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1,
-                onClose: function( selectedDate ) {
-                    $( "#to" ).datepicker( "option", "minDate", selectedDate );
-                }
-            });
-            $( "#to" ).datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1,
-                onClose: function( selectedDate ) {
-                    $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(function() {
-            $( "#tabs" ).tabs();
-        });
-    </script>
-
-
-</head>
+    <script src="js/scripts.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    </head>
 <body>
+
 <div class="layout">
     <div class="header">
         <div class="header-login">
             <div class="logo-group">
-                <div class="logo"></div>
+                <div class="logo-div"><a href="" class="logo"></a></div>
                 <div class="home"></div>
             </div>
             <div class="login-group">
@@ -73,15 +29,22 @@
         <div class="header-search">
             <div class="time-slider">
                 <div class="slider-name">Move cursor to choose time frame:</div>
-                <div id="slider"></div>
+                <div id="slider">
+                    <div class="slider-pic-first"></div>
+                    <div class="slider-pic"></div>
+                    <div class="slider-pic"></div>
+                    <div class="slider-pic"></div>
+                    <div class="slider-pic"></div>
+                    <div class="slider-pic-last"></div>
+                </div>
                 <div>
                     <ul class="periods">
-                        <li class="period">Last week</li>
-                        <li class="period">Last weekend</li>
-                        <li class="period">Yesterday</li>
-                        <li class="period">Today</li>
-                        <li class="period">Last 3 hours</li>
-                        <li class="period">Last hour</li>
+                        <li id="periods-1" class="period">Last week</li>
+                        <li id="periods-2" class="period">Last weekend</li>
+                        <li id="periods-3" class="period">Yesterday</li>
+                        <li id="periods-4" class="period">Today</li>
+                        <li id="periods-5" class="period">Last 3 hours</li>
+                        <li id="periods-6" class="period">Last hour</li>
                     </ul>
                 </div>
             </div>
@@ -92,7 +55,7 @@
                 <input class="date-enter" type="text" id="from" name="from">
                 <label for="to"></label>
                 <input class="date-enter" type="text" id="to" name="to">
-                <a href=""><div class="refresh">refresh</div></a>
+                <div class="refresh"><a href="" class="refresh">refresh</a></div>
             </div>
         </div>
     </div>
@@ -122,24 +85,25 @@
             <div class="menu-tab" id="tabs-5">
                 <div class="table-header">
                     <div class="events-list">10 Entries</div>
-                    <div class="events-search">Search</div>
+                    <input type="search" class="events-search" value="Search"></input>
+                    <input type="submit" class="search-submit" value=""></input>
                     <a href=""><div class="events-new">NEW</div></a>
                 </div>
-                <table class="events-table" style="width:100%; height: 100%">
+                <table class="events-table" style="width:1110px; height: 100%">
                     <tr class="rows-1">
-                        <td>Event</td>
+                        <td class="">Event<div class="rectangle-gray"></div></td>
                         <td></td>
-                        <td>Time</td>
-                        <td class="events-date">Date</td>
+                        <td>Time<div class="rectangle-gray"></div></td>
+                        <td>Date<div class="rectangle-gray"></div></td>
 
                     </tr>
                     <tr class="rows">
-                        <td class=""><div class="events-image"></div></td>
+                        <td class="event-image"><div class="events-image"></div></td>
                         <td class="events-p"><p class="events-name">New Year Party</p>
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">We have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                     <tr class="rows">
@@ -148,7 +112,7 @@
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">WeWe have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                     <tr class="rows">
@@ -157,7 +121,7 @@
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">WeWe have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                     <tr class="rows">
@@ -166,7 +130,7 @@
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">WeWe have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                     <tr class="rows">
@@ -175,7 +139,7 @@
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">WeWe have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                     <tr class="rows">
@@ -184,7 +148,7 @@
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">WeWe have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                     <tr class="rows">
@@ -193,13 +157,13 @@
                             <p class="events-content">It is always fun to ring in the New Year with a festive party. And we have just the invintation that will help to see the method for your party.</p>
                             <p class="events-content">WeWe have New Year's Eve Party Invitations for many themes including Time to Celebrate New Year's Party Invitations. </p>
                         </td>
-                        <td class="events-time">20:00</td>
+                        <td class="events-time">20:00  </td>
                         <td class="events-date">12.13.2014</td>
                     </tr>
                 </table>
                 <div class="table-footer">
-                    <a href=""><div class="events-next">NEXT</div></a>
-                    <a href=""><div class="events-prew">PREVIOUS</div></a>
+                    <div><a href="" class="events-next">NEXT</a></div>
+                    <div><a href="" class="events-prew">PREVIOUS</a></div>
                 </div>
             </div>
             <div class="menu-tab" id="tabs-6">
@@ -225,14 +189,15 @@
         <div class="footer-contacts-group">
             <div class="footer-icons icons-email"></div>
             <div class="footer-contacts">Email:</div>
-            <div class="footer-contacts-info">1oaknyc@com</div>
+            <div class="footer-contacts-info"><a href="mailto:1oaknyc@com">1oaknyc@com</a></div>
         </div>
         <div class="footer-contacts-group">
             <div class="footer-icons icons-link"></div>
             <div class="footer-contacts">Site:</div>
-            <div class="footer-contacts-info">www.1oaknyc.com</div>
+            <div class="footer-contacts-info"><a href="http://www.1oaknyc.com" target="_blank">www.1oaknyc.com</a></div>
         </div>
-        <a href="https://www.google.com.ua/maps/@49.4225331,26.9877245,17z" target="_blank"><div class="map-button">SHOW ON MAP</div></a>
+        <button type="button" class="map-button" onclick="showElem()">SHOW ON MAP</button>
+        <div id="map"/>
 
     </div>
 </div>

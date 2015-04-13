@@ -678,7 +678,8 @@ button.ui-button::-moz-focus-inner {
 	z-index: 1;
 	font-size: 1px;
 	display: block;
-	border: 0;
+	border: none;
+	outline: none;
 	background-position: 0 0;
 }
 
@@ -825,9 +826,21 @@ button.ui-button::-moz-focus-inner {
 	cursor: text;
 
 }
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor:hover {
+	background-color: white;
+	color: #747474;
+	border: none;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+	background-color: white;
+	color: #747474;
+	border: none;
+}
+
+
 .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
 	cursor: pointer;
-
 }
 
  .ui-tabs-anchor{
@@ -874,8 +887,8 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget-content {
-	border: 1px solid #dddddd;
-	background: none;
+	border: none;
+	background: #6a6a6a;
 	color: #333333;
 }
 
@@ -885,9 +898,7 @@ body .ui-tooltip {
 }
 
 
-.ui-widget-content a {
-	color: #333333;
-}
+
 .ui-widget-header {
 	;
 	color: #ffffff;
@@ -911,8 +922,11 @@ body .ui-tooltip {
 
 .ui-widget-content .ui-slider-handle
  {
-		background: #f4c60b ; /*handler color*/
+		background: #f4c60b ;
+		 border: none;
+		 outline: none;/*handler color*/
 	}
+
 
 .ui-state-default a,
 .ui-state-default a:link,
@@ -926,8 +940,9 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #fbcb09;
-	background: #fdf5ce;
+	border: none;
+	outline: none;
+	background: #f4c60b;
 	font-weight: bold;
 	color: #c77405;
 }
@@ -947,10 +962,11 @@ body .ui-tooltip {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #fbd850;
-	background: #ffffff ;
+	border: none;
+	outline: none;
+	background: #f4c60b;
 	font-weight: bold;
-	color: #eb8f00;
+	color: #c77405;
 }
 .ui-state-active a,
 .ui-state-active a:link,
